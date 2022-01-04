@@ -41,13 +41,34 @@ else
             <div class="row">
                 <div class="col-12">
                     <center>
-                        <a class="mx-2 text-dark" href="https://github.com/ttomczak3">GitHub</a>
-                        <a class="mx-2 text-dark" href="https://www.linkedin.com/in/tristentomczak/">LinkedIn</a>
+                        <a class="text-dark">&#x40; 2022 |</a>
+                        <a class="text-primary" style="cursor: pointer;" @onclick="() => OpenDialog()">Contact</a>
                     </center>
                 </div>
             </div>
         </div>
     </section>
+}
+
+@if (Dialog)
+{
+    <ttomczakWebApplication.Component.Component OnClose="@OnDialog"></ttomczakWebApplication.Component.Component>
+}
+
+@code{
+    public bool Dialog { get; set; }
+
+    private void OnDialog(bool accpted)
+    {
+        Dialog = false;
+        StateHasChanged();
+    }
+
+    private void OpenDialog()
+    {
+        Dialog = true;
+        StateHasChanged();
+    }
 }
 
 @functions
